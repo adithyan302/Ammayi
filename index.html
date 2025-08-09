@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ammayi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffe0e0;
+            text-align: center;
+            padding: 50px;
+        }
+        #aunty, #response {
+            font-size: 24px;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+            max-width: 80%;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .yes-btn { background: #4CAF50; color: white; }
+        .no-btn { background: #f44336; color: white; }
+        img {
+          padding: 2ch;
+          width: 40ch;
+          margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>👩‍🦳 Ammayi</h1>
+    <div id="aunty">joli entelum ayo monee?</div>
+    <div id="response"></div>
+    <br>
+    <button class="yes-btn" onclick="reply('yes')">Yes</button>
+    <button class="no-btn" onclick="reply('no')">No</button>
+    <img src="https://i.ibb.co/qYjZ6Js3/Screenshot-2025-08-08-203357.png" alt="Screenshot-2025-08-08-203357" border="0">
+
+    <script>
+        const dialogue = [
+            {
+                question: "joli entekilum ayo monee👀?",
+                yes: "ohh enikk appole ariyamayrnnu nee rekshapedum enn! 🥳",
+                no: "ayyo njan prarthikkam ketto!🥹... ente monokke degree kazhinja odane joli kitty?😊"
+            },
+            {
+                question: "btech pass ayyo?",
+                yes: "nmmle kudumbathile kuttyalle angne alle veraa! 😁",
+                no: "Ini ippo enn pass avana , vere entelum nokk? 😒"
+            },
+            {
+                question: "kalyanam okkke aayo😌?",
+                yes: "kuttikal onnum ayille!😌",
+                no: "ayeeee.. mudi okke narachalo! 😩"
+            },
+            {
+                question: "ninte cousin ninne kaalum salary indo?",
+                yes: "ohh ath enth patty mone nee alle avane kaalum padikka! 👍",
+                no: "ohh avan ninnekaalum padichathanalo ennt avan enth patty ! 🙄"
+            }
+        ];
+
+        let qIndex = 0;
+
+        function reply(answer) {
+            const responseDiv = document.getElementById("response");
+
+            // Show aunty's reaction
+            if (answer === 'yes') {
+                responseDiv.innerText = dialogue[qIndex].yes;
+            } else {
+                responseDiv.innerText = dialogue[qIndex].no;
+            }
+
+            // Move to next question after a short delay
+            setTimeout(() => {
+                qIndex++;
+                if (qIndex >= dialogue.length) {
+                    document.getElementById("aunty").innerText = "sheri mone ammayi pottey! 😌";
+                    document.querySelector(".yes-btn").style.display = "none";
+                    document.querySelector(".no-btn").style.display = "none";
+                    responseDiv.innerText = "";
+                } else {
+                    document.getElementById("aunty").innerText = dialogue[qIndex].question;
+                    responseDiv.innerText = "";
+                }
+            }, 3500); // 1.5 second pause so you can read response
+        }
+    </script>
+
+</body>
+</html>
